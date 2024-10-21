@@ -71,12 +71,18 @@
   margin-bottom: 20px;
 }
 
+/* Grid container - Hizmetlerin geniş ekranlarda ortalanması için max-width ekleniyor */
 .services-grid {
   display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  justify-content: center; /* Grid öğelerini ortalıyoruz */
+  align-items: flex-start; /* Kartların üstten hizalanmasını sağlıyoruz */
+  gap: 20px; /* Kartlar arasında boşluk bırakıyoruz */
+  flex-wrap: wrap; /* Kartların küçük ekranlarda alt alta gelmesini sağlıyoruz */
+  max-width: 1200px; /* Geniş ekranlarda max genişlik belirledik */
+  margin: 0 auto; /* Geniş ekranlarda grid yapısını ortalıyoruz */
 }
 
+/* Hizmet kartları */
 .service-item {
   max-width: 300px;
   margin: 20px;
@@ -96,4 +102,11 @@
 .service-item p {
   font-size: 1rem;
   margin-top: 10px;
+}
+
+/* Büyük ekranlarda görsel uyum için medya sorgusu */
+@media (min-width: 1024px) {
+  .services-grid {
+    justify-content: space-between; /* Büyük ekranlarda kartların daha geniş aralıklarla yayılmasını sağlıyoruz */
+  }
 }
