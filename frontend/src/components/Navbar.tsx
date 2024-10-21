@@ -14,7 +14,7 @@ const Navbar: React.FC = () => {
     <nav className="navbar">
       <div className="navbar-logo">
         <Link to="/">
-          <img src="/assets/logo.png" alt="Beauty Center Logo" />{' '}
+          <img src="/assets/images/logo4.png" alt="Beauty Center Logo" />{' '}
           {/* Beauty Center Logo */}
         </Link>
       </div>
@@ -23,7 +23,7 @@ const Navbar: React.FC = () => {
       </div>
       <ul className={`navbar-links ${isOpen ? 'active' : ''}`}>
         <li>
-          <Link to="/home">Home</Link> {/* "a" yerine "Link" kullanıldı */}
+          <Link to="/">Home</Link> {/* "a" yerine "Link" kullanıldı */}
         </li>
         <li>
           <Link to="/services">Services</Link>

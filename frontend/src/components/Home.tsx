@@ -30,17 +30,17 @@ const Home: React.FC = () => (
       <h2>Our Services</h2>
       <div className="services-grid">
         <div className="service-item">
-          <img src="https://via.placeholder.com/150" alt="Service 1" />
+          <img src="/assets/images/nail.jpg" alt="Nail Care" />
+          <h3>Nailcare</h3>
+          <p>Professional Nail Care and styling to elevate your look.</p>
+        </div>
+        <div className="service-item">
+          <img src="/assets/images/skin-care.jpg" alt="Skin Care" />
           <h3>Skincare</h3>
           <p>Luxury skincare treatments tailored to your needs.</p>
         </div>
         <div className="service-item">
-          <img src="https://via.placeholder.com/150" alt="Service 2" />
-          <h3>Hair Styling</h3>
-          <p>Professional haircuts and styling to elevate your look.</p>
-        </div>
-        <div className="service-item">
-          <img src="https://via.placeholder.com/150" alt="Service 3" />
+          <img src="/assets/images/spa.jpg" alt="Spa Treatments" />
           <h3>Spa Treatments</h3>
           <p>Relax and unwind with our signature spa treatments.</p>
         </div>
