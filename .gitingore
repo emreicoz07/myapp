@@ -56,3 +56,6 @@ frontend/build/
 # Backend specific (for example if using Express or any framework)
 backend/dist/
 backend/.env
+
+#CRLF TO LF
+text=auto
