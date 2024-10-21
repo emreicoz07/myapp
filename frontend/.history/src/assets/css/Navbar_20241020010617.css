@@ -1,0 +1,78 @@
+/* Varsayılan olarak mobile-first yaklaşıyoruz */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+  position: relative;
+}
+
+.navbar-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ff6347;
+}
+
+/* Menü linkleri mobilde gizli */
+.navbar-links {
+  list-style: none;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  width: 100%;
+  background-color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  display: none; /* Gizli */
+}
+
+.navbar-links.active {
+  display: flex; /* Menü açıldığında gösterilir */
+}
+
+.navbar-links li {
+  padding: 10px 0;
+}
+
+.navbar-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.navbar-links a:hover {
+  color: #ff6347;
+  transition: color 0.3s ease;
+}
+
+/* Hamburger menü ikonu */
+.navbar-hamburger {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Büyük ekranlar için medya sorgusu */
+@media (min-width: 768px) {
+  .navbar-hamburger {
+    display: none; /* Büyük ekranlarda hamburger gizlenir */
+  }
+
+  .navbar-links {
+    position: static;
+    flex-direction: row;
+    display: flex; /* Büyük ekranlarda menü daima görünür */
+    gap: 20px;
+  }
+
+  .navbar-links li {
+    padding: 0;
+  }
+
+  .navbar-links a {
+    font-size: 1rem;
+  }
+}

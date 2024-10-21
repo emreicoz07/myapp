@@ -1,0 +1,119 @@
+
+# Todo App Backend
+
+This is the backend of the Todo App built using TypeScript, Express, and MongoDB. The project follows clean code principles using ESLint and Prettier, and supports real-time updates with Nodemon.
+
+---
+
+Bu, TypeScript, Express ve MongoDB kullanılarak oluşturulmuş Todo App'in backend kısmıdır. Proje, ESLint ve Prettier ile temiz kod prensiplerini takip eder ve Nodemon ile gerçek zamanlı güncellemeleri destekler.
+
+## Requirements / Gereksinimler
+
+- Node.js v14+ or higher / Node.js v14+ veya üstü
+- MongoDB Database / MongoDB Veritabanı
+
+## Setup Instructions / Kurulum Talimatları
+
+### 1. Clone the repository / Depoyu klonlayın
+
+```bash
+git clone <repository-url>
+```
+
+### 2. Install dependencies / Bağımlılıkları yükleyin
+
+```bash
+cd backend
+npm install
+```
+
+### 3. Create a `.env` file / `.env` dosyası oluşturun
+
+In the root of the `backend` directory, create a `.env` file and add the following content. Replace the values with your actual MongoDB connection details.
+
+Backend dizininde `.env` dosyasını oluşturun ve aşağıdaki bilgileri ekleyin. MongoDB bağlantı bilgilerinizi bu değerlere göre güncelleyin.
+
+```env
+MONGO_URI=mongodb+srv://<username>:<password>@<cluster-url>/<database-name>?retryWrites=true&w=majority
+PORT=5000
+```
+
+### 4. Run the development server with Nodemon / Nodemon ile geliştirme sunucusunu çalıştırın
+
+```bash
+npm run dev
+```
+
+This command will start the server and automatically restart it whenever changes are detected in the code.
+
+Bu komut sunucuyu başlatacak ve kodda yapılan değişiklikler algılandığında otomatik olarak yeniden başlayacaktır.
+
+### 5. Building the project / Projeyi derleyin
+
+```bash
+npm run build
+```
+
+This command will compile the TypeScript files into JavaScript.
+
+Bu komut, TypeScript dosyalarını JavaScript'e derler.
+
+### 6. Running the compiled server / Derlenmiş sunucuyu çalıştırın
+
+```bash
+npm start
+```
+
+This will run the compiled files in the `dist/` directory.
+
+Bu, `dist/` dizinindeki derlenmiş dosyaları çalıştıracaktır.
+
+## Linting and Formatting / Lint ve Formatlama
+
+### Running ESLint / ESLint çalıştırma
+
+To check for any linting issues, run:
+
+Herhangi bir lint hatası olup olmadığını kontrol etmek için şu komutu çalıştırın:
+
+```bash
+npm run lint
+```
+
+### Formatting with Prettier / Prettier ile formatlama
+
+To automatically format the code with Prettier, run:
+
+Kodunuzu Prettier ile otomatik olarak biçimlendirmek için şu komutu çalıştırın:
+
+```bash
+npm run format
+```
+
+## Project Structure / Proje Yapısı
+
+```
+backend/
+│
+├── dist/                # Compiled JavaScript files / Derlenmiş JavaScript dosyaları
+├── node_modules/        # Dependencies / Bağımlılıklar
+├── src/                 # Source files / Kaynak dosyalar
+│   ├── app.ts           # Main entry point / Ana giriş noktası
+│   ├── controllers/     # Controllers / Kontrolcüler
+│   ├── models/          # Database models / Veritabanı modelleri
+│   ├── routes/          # API routes / API rotaları
+│   ├── middleware/      # Middleware functions / Orta katman işlevleri
+│   └── utils/           # Utility functions / Yardımcı işlevler
+├── .eslintrc.json       # ESLint configuration / ESLint yapılandırması
+├── .prettierrc          # Prettier configuration / Prettier yapılandırması
+├── package.json         # Project dependencies and scripts / Proje bağımlılıkları ve komutları
+└── tsconfig.json        # TypeScript configuration / TypeScript yapılandırması
+```
+
+---
+
+This project is part of the Todo App full-stack development. The backend handles API requests, database management, and business logic, while the frontend is built with React.
+
+---
+
+Bu proje, Todo App tam yığın geliştirmesinin bir parçasıdır. Backend, API isteklerini, veritabanı yönetimini ve iş mantığını işlerken, frontend React ile oluşturulacaktır.

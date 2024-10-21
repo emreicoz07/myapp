@@ -1,0 +1,58 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Logs
+logs
+*.log
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# dotenv environment variables file
+.env
+
+# Dependency directories
+jspm_packages/
+bower_components/
+
+# Compiled output
+dist/
+build/
+
+# TypeScript
+*.tsbuildinfo
+tsconfig.tsbuildinfo
+
+# Next.js
+.next/
+out/
+
+# Parcel
+.cache/
+.parcel-cache/
+
+# Static files cache
+.cache/
+
+# MacOS
+.DS_Store
+
+# IDE-specific (VSCode, JetBrains, etc.)
+.vscode/
+.idea/
+*.swp
+
+# Build directories for both frontend and backend
+frontend/node_modules/
+backend/node_modules/
+
+# Frontend specific
+frontend/build/
+
+# Backend specific (for example if using Express or any framework)
+backend/dist/
+backend/.env
