@@ -38,9 +38,7 @@
     "@typescript-eslint/no-explicit-any": "warn",
     "class-methods-use-this": "off",
     "no-use-before-define": "off",
-    "@typescript-eslint/no-use-before-define": ["error"],
     "no-shadow": "off",
-    "@typescript-eslint/no-shadow": ["error"],
     "import/prefer-default-export": "off", // Default export yerine named export kullanımı teşvik edilir
     "import/order": [
       "error",
