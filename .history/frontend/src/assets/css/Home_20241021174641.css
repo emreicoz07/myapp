@@ -1,0 +1,112 @@
+/* General container for the home page */
+.home-container {
+  font-family: Arial, sans-serif;
+}
+
+/* Hero Section */
+/* NOTE : BACKGROUND SHOULD 1200-600px */
+/* SERVICE ITEM SHOULD BE 150x150px */
+
+.hero {
+  background: url('assets/images/backgroundnail.jpg') center center/cover
+    no-repeat;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.hero-content p {
+  font-size: 1.5rem;
+  margin: 20px 0;
+}
+
+.hero-button {
+  background-color: #ff6347;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 25px;
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.hero-button:hover {
+  background-color: #e5533d;
+}
+
+/* About Section */
+.about {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.about h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.about p {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+/* Services Section */
+.services {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.services h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Grid container - Hizmetlerin geniş ekranlarda ortalanması için max-width ekleniyor */
+.services-grid {
+  display: flex;
+  justify-content: center; /* Grid öğelerini ortalıyoruz */
+  align-items: flex-start; /* Kartların üstten hizalanmasını sağlıyoruz */
+  gap: 20px; /* Kartlar arasında boşluk bırakıyoruz */
+  flex-wrap: wrap; /* Kartların küçük ekranlarda alt alta gelmesini sağlıyoruz */
+  max-width: 1200px; /* Geniş ekranlarda max genişlik belirledik */
+  margin: 0 auto; /* Geniş ekranlarda grid yapısını ortalıyoruz */
+}
+
+/* Hizmet kartları */
+.service-item {
+  max-width: 300px;
+  margin: 20px;
+  text-align: center;
+}
+
+.service-item img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.service-item h3 {
+  font-size: 1.5rem;
+  margin-top: 15px;
+}
+
+.service-item p {
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+/* Büyük ekranlarda görsel uyum için medya sorgusu */
+@media (min-width: 1024px) {
+  .services-grid {
+    justify-content: space-between; /* Büyük ekranlarda kartların daha geniş aralıklarla yayılmasını sağlıyoruz */
+  }
+}
