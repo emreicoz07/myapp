@@ -11,6 +11,7 @@ const Appointment: React.FC = () => {
   const [customerName, setCustomerName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  const [errors, setErrors] = useState<any[]>([]); // Hataları tutmak için bir state
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -28,27 +29,42 @@ const Appointment: React.FC = () => {
       body: JSON.stringify(newAppointment),
     });
 
+    const data = await response.json();
+
     if (response.ok) {
       // Redux store'a randevuyu ekliyoruz
       dispatch(addAppointment(newAppointment));
       alert('Appointment successfully booked and confirmation email sent!');
+      setErrors([]); // Hataları temizliyoruz
+      // Formu temizliyoruz
+      setService('');
+      setDate('');
+      setTime('');
+      setCustomerName('');
+      setEmail('');
+      setPhone('');
     } else {
-      alert('Error booking appointment');
+      // Backend'den gelen hataları state'e kaydediyoruz
+      setErrors(data.errors || []);
     }
-
-    // Formu temizliyoruz
-    setService('');
-    setDate('');
-    setTime('');
-    setCustomerName('');
-    setEmail('');
-    setPhone('');
   };
 
   return (
     <div className="appointments-container">
       <h1>Book Your Appointment</h1>
       <form onSubmit={handleSubmit}>
+        {/* Hata mesajlarını göster */}
+        {errors.length > 0 && (
+          <div className="error-messages">
+            {errors.map((err, index) => (
+              <p key={index} className="error">
+                {err.message}
+              </p>
+            ))}
+          </div>
+        )}
+
+        {/* Service Selection */}
         <label>Choose a Service:</label>
         <select
           value={service}
@@ -62,6 +78,7 @@ const Appointment: React.FC = () => {
           <option value="Nailcare">Nailcare</option>
         </select>
 
+        {/* Date Selection */}
         <label>Select Date:</label>
         <input
           type="date"
@@ -70,6 +87,7 @@ const Appointment: React.FC = () => {
           required
         />
 
+        {/* Time Selection */}
         <label>Select Time:</label>
         <input
           type="time"
@@ -78,6 +96,7 @@ const Appointment: React.FC = () => {
           required
         />
 
+        {/* Customer Info */}
         <label>Customer Name:</label>
         <input
           type="text"
