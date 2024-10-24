@@ -1,24 +1,12 @@
 import express, { Request, Response } from 'express';
 import { body, validationResult } from 'express-validator';
+import Appointment from '../models/Appointment'; // MongoDB modelimizi import ediyoruz
+import { sendEmail } from '../controllers/mailController'; // E-posta gönderim fonksiyonunu import ediyoruz
 
 const router = express.Router();
 
-// Appointment türünü tanımlıyoruz
-interface Appointment {
-  service: string;
-  date: Date;
-  time: string;
-  customerName: string;
-  email: string;
-  phone: string;
-}
-
-// appointments array'inin türü Appointment[] olacak şekilde belirleniyor
-const appointments: Appointment[] = [];
-//Mongo Database
-
 // @route Post /api/appointments
-// @desc  Create a new appointment
+// @desc  Create a new appointment and save to MongoDB
 // @access Public
 router.post(
   '/',
@@ -28,12 +16,9 @@ router.post(
     body('time').isLength({ min: 1 }).withMessage('Time is required'),
     body('customerName').notEmpty().withMessage('Customer name is required'),
     body('email').isEmail().withMessage('Invalid email'),
-    body('phone')
-      .isMobilePhone(['tr-TR', 'en-US'])
-      .withMessage('Invalid phone number'),
+    body('phone').isMobilePhone(['tr-TR', 'en-US']).withMessage('Invalid phone number'),
   ],
   async (req: Request, res: Response): Promise<void> => {
-    // Fonksiyonu async yaptık ve Promise<void> döndürüyoruz
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       res.status(400).json({ errors: errors.array() });
@@ -42,14 +27,42 @@ router.post(
 
     // Randevu verilerini alıyoruz
     const { service, date, time, customerName, email, phone } = req.body;
-    const newAppointment = { service, date, time, customerName, email, phone };
+    const newAppointment = new Appointment({
+      service,
+      date,
+      time,
+      customerName,
+      email,
+      phone,
+    });
 
-    // Veritabanına kaydetme işlemi (mock ya da gerçek bir veritabanı)
-    appointments.push(newAppointment);
+    // MongoDB'ye kaydediyoruz
+    try {
+      await newAppointment.save();
 
-    // Başarıyla tamamlanan durumda Response döndürülür
-    res
-      .status(201)
-      .json({ message: 'Appointment created successfully', newAppointment });
+      // E-posta gönderim işlemleri
+      const adminEmail = 'admin@example.com'; // Yönetici e-posta adresi
+      const customerEmail = email; // Müşterinin e-posta adresi
+
+      // Müşteriye e-posta gönderiyoruz
+      await sendEmail(
+        customerEmail,
+        'Appointment Confirmation',
+        `Dear ${customerName},\n\nYour appointment for ${service} on ${date} at ${time} has been confirmed.`
+      );
+
+      // Yöneticilere e-posta gönderiyoruz
+      await sendEmail(
+        adminEmail,
+        'New Appointment Created',
+        `A new appointment has been created for ${customerName} (Email: ${email}). Service: ${service}, Date: ${date}, Time: ${time}.`
+      );
+
+      res.status(201).json({ message: 'Appointment created and saved to database successfully', newAppointment });
+    } catch (error) {
+      res.status(500).json({ message: 'Failed to save appointment', error });
+    }
   },
 );
+
+export default router;

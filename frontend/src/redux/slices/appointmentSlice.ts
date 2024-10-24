@@ -14,7 +14,7 @@ interface AppointmentState {
 }
 
 const initialState: AppointmentState = {
-  appointments: [],
+  appointments: [], // Randevuların tutulduğu array
 };
 
 const appointmentSlice = createSlice({

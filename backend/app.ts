@@ -1,10 +1,10 @@
 import express from 'express';
+import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import cors from 'cors';
-import todoRoutes from './routes/todoRoutes';
+import bodyParser from 'body-parser';
+import appointmentsRouter from './routes/appointments'; // appointments rotasını ekliyoruz
 
-// .env dosyasındaki bilgileri kullanmak için dotenv'i yapılandıralım
 dotenv.config();
 
 const app = express();
@@ -21,13 +21,22 @@ mongoose
     console.error('MongoDB bağlantı hatası:', err.message);
   });
 
-//Cors ile tüm kaynaklardan gelen istekleri kabul etmesini sağlıyoruz,
-app.use(cors());
+// **CORS middleware'i ekliyoruz ve sadece bir defa kullanıyoruz**
+app.use(cors({
+  origin: 'http://localhost:3000', // Frontend URL'nizi burada belirtin
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'], // İzin verilen başlıklar
+  credentials: true, // Kimlik bilgileri ile istek yapılmasına izin veriyoruz
+}));
 
-//Todos api
-app.use(todoRoutes);
+// Body parser kullanımı
+app.use(bodyParser.json());
 
-// Basit bir test route'u
+// Randevu rotası
+app.use('/api/appointments', appointmentsRouter);
+
+app.use(express.json());
+
 app.get('/', (req, res) => {
   res.send('Backend is running!');
 });

@@ -14,13 +14,27 @@ const Appointment: React.FC = () => {
 
   const dispatch = useDispatch<AppDispatch>();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Randevu verilerini dispatch ile Redux'a ekliyoruz
-    dispatch(
-      addAppointment({ service, date, time, customerName, email, phone }),
-    );
+    const newAppointment = { service, date, time, customerName, email, phone };
+
+    // Backend'e randevu gönderiyoruz
+    const response = await fetch('http://localhost:5000/api/appointments', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newAppointment),
+    });
+
+    if (response.ok) {
+      // Redux store'a randevuyu ekliyoruz
+      dispatch(addAppointment(newAppointment));
+      alert('Appointment successfully booked and confirmation email sent!');
+    } else {
+      alert('Error booking appointment');
+    }
 
     // Formu temizliyoruz
     setService('');
@@ -29,15 +43,12 @@ const Appointment: React.FC = () => {
     setCustomerName('');
     setEmail('');
     setPhone('');
-
-    alert('Appointment successfully booked!');
   };
 
   return (
     <div className="appointments-container">
       <h1>Book Your Appointment</h1>
       <form onSubmit={handleSubmit}>
-        {/* Service Selection */}
         <label>Choose a Service:</label>
         <select
           value={service}
@@ -51,7 +62,6 @@ const Appointment: React.FC = () => {
           <option value="Nailcare">Nailcare</option>
         </select>
 
-        {/* Date Selection */}
         <label>Select Date:</label>
         <input
           type="date"
@@ -60,7 +70,6 @@ const Appointment: React.FC = () => {
           required
         />
 
-        {/* Time Selection */}
         <label>Select Time:</label>
         <input
           type="time"
@@ -69,7 +78,6 @@ const Appointment: React.FC = () => {
           required
         />
 
-        {/* Customer Info */}
         <label>Customer Name:</label>
         <input
           type="text"
