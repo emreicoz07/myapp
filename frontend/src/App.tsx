@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Re
 import Home from './components/Home';
 import Navbar from './components/Navbar';
 import Services from './components/Services';
+import About from 'components/About';
 import Appointment from 'components/Appointment';
+import Contact from 'components/Contact';
 
 const App: React.FC = () => (
   <Router>
@@ -15,6 +17,8 @@ const App: React.FC = () => (
         <Route path="/services" element={<Services />} /> {/* Services Route */}
         <Route path="/appointment" element={<Appointment />} />
         {/* Appointment Route */}
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </div>
   </Router>

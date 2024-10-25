@@ -3,7 +3,9 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
-import appointmentsRouter from './routes/appointments'; // appointments rotasını ekliyoruz
+import appointmentsRouter from './routes/appointments'; // appointments rotasını ekliyoruz,
+import contactRouter from './routes/contact';
+
 
 dotenv.config();
 
@@ -36,6 +38,9 @@ app.use(bodyParser.json());
 
 // Randevu rotası
 app.use('/api/appointments', appointmentsRouter);
+
+// Contact route
+app.use('/api/contact', contactRouter);
 
 app.use(express.json());
 

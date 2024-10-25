@@ -82,7 +82,6 @@
   margin: 0 auto; /* Ortalamak için margin ayarı */
 }
 
-
 /* Hizmet kartları */
 .service-item {
   text-align: center;
@@ -126,9 +125,9 @@
 /* Mobil uyumluluk için medya sorgusu */
 @media (max-width: 768px) {
   .home-services-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 3fr));    
+    grid-template-columns: repeat(auto-fit, minmax(250px, 3fr));
   }
-  
+
   .service-item {
     max-width: 100%; /* Kartların küçük ekranlarda daha küçük görünmesini sağlar */
     margin: 10px auto; /* Her kartı ortalar */
