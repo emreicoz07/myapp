@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import { validationResult } from 'express-validator';
-import { sendAppointmentEmail } from './mailController'; // E-posta fonksiyonunu import ediyoruz
 
 interface Appointment {
   service: string;
@@ -32,8 +31,6 @@ export const createAppointment = async (req: Request, res: Response) => {
 
   appointments.push(newAppointment); // Randevuyu geçici olarak saklıyoruz
 
-  // E-posta gönderme işlemi
-  await sendAppointmentEmail(newAppointment);
 
   res
     .status(201)
