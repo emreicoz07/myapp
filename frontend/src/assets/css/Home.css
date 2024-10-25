@@ -61,7 +61,7 @@
 }
 
 /* Services Section */
-.services {
+.home-services {
   padding: 50px 20px;
   text-align: center;
 }
@@ -72,41 +72,66 @@
 }
 
 /* Grid container - Hizmetlerin geniş ekranlarda ortalanması için max-width ekleniyor */
-.services-grid {
-  display: flex;
-  justify-content: center; /* Grid öğelerini ortalıyoruz */
-  align-items: flex-start; /* Kartların üstten hizalanmasını sağlıyoruz */
-  gap: 20px; /* Kartlar arasında boşluk bırakıyoruz */
-  flex-wrap: wrap; /* Kartların küçük ekranlarda alt alta gelmesini sağlıyoruz */
-  max-width: 1200px; /* Geniş ekranlarda max genişlik belirledik */
-  margin: 0 auto; /* Geniş ekranlarda grid yapısını ortalıyoruz */
+.home-services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  max-width: 1400px; /* Geniş ekranlarda grid yapısının genişliğini sınırlıyoruz */
+  margin: 0 auto; /* Ortalamak için margin ayarı */
 }
+
 
 /* Hizmet kartları */
 .service-item {
-  max-width: 300px;
-  margin: 20px;
   text-align: center;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .service-item img {
   width: 100%;
-  border-radius: 10px;
+  height: 200px;
+  object-fit: cover;
 }
 
 .service-item h3 {
   font-size: 1.5rem;
-  margin-top: 15px;
+  color: #333;
+  margin: 20px 0 10px 0;
 }
 
 .service-item p {
   font-size: 1rem;
-  margin-top: 10px;
+  color: #666;
+  padding: 0 20px 20px;
+}
+.service-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* Büyük ekranlarda görsel uyum için medya sorgusu */
 @media (min-width: 1024px) {
   .services-grid {
     justify-content: space-between; /* Büyük ekranlarda kartların daha geniş aralıklarla yayılmasını sağlıyoruz */
+  }
+}
+/* Mobil uyumluluk için medya sorgusu */
+@media (max-width: 768px) {
+  .home-services-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 3fr));    
+  }
+  
+  .service-item {
+    max-width: 100%; /* Kartların küçük ekranlarda daha küçük görünmesini sağlar */
+    margin: 10px auto; /* Her kartı ortalar */
+    width: 350px;
   }
 }

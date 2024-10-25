@@ -2,13 +2,11 @@
   "compilerOptions": {
     "target": "ES2020", // Tarayıcıların ve Node.js'in desteklediği ECMAScript versiyonu
     "module": "commonjs", // Node.js modül sistemi
-    "rootDir": "./src", // TypeScript dosyalarının bulunduğu dizin
-    "outDir": "./dist", // Derlenen JavaScript dosyalarının çıkış dizini
     "strict": true, // Katı TypeScript denetim modunu etkinleştirir
     "esModuleInterop": true, // ES6 modül sistemini CommonJS ile uyumlu hale getirir
     "skipLibCheck": true, // Kütüphane dosyalarını kontrol etmeyi atlar (derleme süresini hızlandırır)
     "forceConsistentCasingInFileNames": true // Büyük/küçük harf duyarlılığı sağlar
   },
-  "include": ["src"], // Derleme işlemi için dahil edilecek dosyalar
-  "exclude": ["node_modules", "dist"] // Derleme işleminden hariç tutulacak dosyalar
+  "include": ["./*.ts"],  // backend dizinindeki tüm .ts dosyalarını içerecek şekilde ayarladık
+  "exclude": ["node_modules", "dist"]
 }

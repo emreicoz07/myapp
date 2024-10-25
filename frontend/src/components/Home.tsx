@@ -26,9 +26,9 @@ const Home: React.FC = () => (
     </section>
 
     {/* Services Section */}
-    <section className="services">
+    <section className="home-services">
       <h2>Our Services</h2>
-      <div className="services-grid">
+      <div className="home-services-grid">
         <div className="service-item">
           <img src="/assets/images/nail.jpg" alt="Nail Care" />
           <h3>Nailcare</h3>

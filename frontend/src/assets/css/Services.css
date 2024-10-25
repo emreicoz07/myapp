@@ -23,9 +23,11 @@
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  gap: 30px;
   justify-content: center;
+  max-width: 1400px; /* Geniş ekranlarda grid yapısının genişliğini sınırlıyoruz */
   align-items: center;
+  margin: 0 auto;
 }
 
 /* Hizmet kartlarının stili */
