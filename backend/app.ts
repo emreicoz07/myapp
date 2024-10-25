@@ -22,12 +22,14 @@ mongoose
   });
 
 // **CORS middleware'i ekliyoruz ve sadece bir defa kullanıyoruz**
-app.use(cors({
-  origin: 'http://localhost:3000', // Frontend URL'nizi burada belirtin
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'], // İzin verilen başlıklar
-  credentials: true, // Kimlik bilgileri ile istek yapılmasına izin veriyoruz
-}));
+app.use(
+  cors({
+    origin: 'http://localhost:3000', // Frontend URL'nizi burada belirtin
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'], // İzin verilen başlıklar
+    credentials: true, // Kimlik bilgileri ile istek yapılmasına izin veriyoruz
+  }),
+);
 
 // Body parser kullanımı
 app.use(bodyParser.json());

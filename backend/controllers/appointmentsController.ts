@@ -11,7 +11,7 @@ interface Appointment {
   phone: string;
 }
 
-const appointments: Appointment[] = [];  // Geçici bir veri kaynağı (veritabanı yerine)
+const appointments: Appointment[] = []; // Geçici bir veri kaynağı (veritabanı yerine)
 
 export const createAppointment = async (req: Request, res: Response) => {
   const errors = validationResult(req);
@@ -21,12 +21,21 @@ export const createAppointment = async (req: Request, res: Response) => {
 
   const { service, date, time, customerName, email, phone } = req.body;
 
-  const newAppointment: Appointment = { service, date, time, customerName, email, phone };
-  
-  appointments.push(newAppointment);  // Randevuyu geçici olarak saklıyoruz
+  const newAppointment: Appointment = {
+    service,
+    date,
+    time,
+    customerName,
+    email,
+    phone,
+  };
+
+  appointments.push(newAppointment); // Randevuyu geçici olarak saklıyoruz
 
   // E-posta gönderme işlemi
   await sendAppointmentEmail(newAppointment);
 
-  res.status(201).json({ message: 'Appointment created successfully!', newAppointment });
+  res
+    .status(201)
+    .json({ message: 'Appointment created successfully!', newAppointment });
 };

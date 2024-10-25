@@ -37,11 +37,7 @@ const Appointment: React.FC = () => {
       if (response.ok) {
         dispatch(addAppointment(newAppointment));
         setSuccess(true); // İşlem başarılı olunca başarı durumu true yapılıyor
-      } else {
-        alert('Error booking appointment: ');
       }
-    } catch (error) {
-      alert('An error occurred while booking the appointment.');
     } finally {
       setLoading(false); // İşlem tamamlanınca loading durumu false yapılıyor
     }
