@@ -53,6 +53,10 @@ const Services: React.FC = () => (
         </p>
       </div>
     </div>
+    <h1 className="services-title">Testimonials</h1>
+    <p className="services-subtitle">
+      Explore the variety of beauty treatments we offer, tailored just for you.
+    </p>
   </div>
 );
 

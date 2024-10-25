@@ -6,20 +6,25 @@ import Services from './components/Services';
 import About from 'components/About';
 import Appointment from 'components/Appointment';
 import Contact from 'components/Contact';
+import Footer from 'components/Footer';
 
 const App: React.FC = () => (
   <Router>
     {/* Burada Router ile sarılı olmalı */}
-    <div className="App">
+    <div id="root">
       <Navbar /> {/* Navbar burada yer alacak */}
-      <Routes>
-        <Route path="/" element={<Home />} /> {/* Home Route */}
-        <Route path="/services" element={<Services />} /> {/* Services Route */}
-        <Route path="/appointment" element={<Appointment />} />
-        {/* Appointment Route */}
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
+      <main className="main-content">
+        <Routes>
+          <Route path="/" element={<Home />} /> {/* Home Route */}
+          <Route path="/services" element={<Services />} />{' '}
+          {/* Services Route */}
+          <Route path="/appointment" element={<Appointment />} />
+          {/* Appointment Route */}
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </main>
+      <Footer />
     </div>
   </Router>
 );

@@ -36,3 +36,26 @@
     transform: rotate(360deg);
   }
 }
+
+/* Ana konteyner ve footer için ayar */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1; /* İçeriğin yüksekliği dolduktan sonra kalan alanı doldurur */
+}
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
