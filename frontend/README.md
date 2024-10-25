@@ -91,39 +91,38 @@ This project is part of the Todo App full-stack development. The frontend handle
 
 Bu proje, Todo App tam yığın geliştirmesinin bir parçasıdır. Frontend, kullanıcı arayüzünü işler ve todo görevlerini yönetmek için backend ile etkileşim kurar.
 
-
-ESLINT VE PRETTIER ICIN GEREKLI KODLAR 
+ESLINT VE PRETTIER ICIN GEREKLI KODLAR
 
 {
-  "env": {
-    "node": true,
-    "es2020": true,
-    "browser": true,
-    "jest": true
-  },
-  "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "airbnb-base",
-    "airbnb-typescript/base", // TypeScript için airbnb-base'i genişlet
-    "prettier"
-  ],
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaVersion": 12,
-    "sourceType": "module",
-    "project": "./tsconfig.json" // TypeScript için proje kökünü belirtiyoruz
-  },
-  "plugins": ["@typescript-eslint", "prettier"],
-  "rules": {
-    "prettier/prettier": "error",
-    "no-console": "off",
-    "no-unused-vars": "warn",
-    "no-underscore-dangle": ["error", { "allow": ["_id"] }],
-    "import/extensions": "off", // Uzantılar genellikle TS ile kontrol edilir
-    "linebreak-style": ["error", "unix"],
-    "import/no-extraneous-dependencies": "error",
-    "arrow-parens": ["error", "always"],
+"env": {
+"node": true,
+"es2020": true,
+"browser": true,
+"jest": true
+},
+"extends": [
+"eslint:recommended",
+"plugin:@typescript-eslint/recommended",
+"airbnb-base",
+"airbnb-typescript/base", // TypeScript için airbnb-base'i genişlet
+"prettier"
+],
+"parser": "@typescript-eslint/parser",
+"parserOptions": {
+"ecmaVersion": 12,
+"sourceType": "module",
+"project": "./tsconfig.json" // TypeScript için proje kökünü belirtiyoruz
+},
+"plugins": ["@typescript-eslint", "prettier"],
+"rules": {
+"prettier/prettier": "error",
+"no-console": "off",
+"no-unused-vars": "warn",
+"no-underscore-dangle": ["error", { "allow": ["_id"] }],
+"import/extensions": "off", // Uzantılar genellikle TS ile kontrol edilir
+"linebreak-style": ["error", "unix"],
+"import/no-extraneous-dependencies": "error",
+"arrow-parens": ["error", "always"],
 
     // TypeScript ve React uyumluluğunu arttıran ek kurallar
     "@typescript-eslint/no-unused-vars": [
@@ -140,10 +139,11 @@ ESLINT VE PRETTIER ICIN GEREKLI KODLAR
       "error",
       { "alphabetize": { "order": "asc", "caseInsensitive": true } }
     ]
-  },
-  "settings": {
-    "import/resolver": {
-      "typescript": {}
-    }
-  }
+
+},
+"settings": {
+"import/resolver": {
+"typescript": {}
+}
+}
 }
