@@ -20,9 +20,20 @@ export const createAppointment = async (req: Request, res: Response) => {
 
   const { service, date, time, customerName, email, phone } = req.body;
 
+  // Gelen `date` değerini `dd/mm/yyyy` formatına göre ayrıştır
+  const [day, month, year] = date.split('/');
+  const formattedDate = new Date(`${year}-${month}-${day}`);
+
+  if (isNaN(formattedDate.getTime())) {
+    return res.status(400).json({
+      success: false,
+      message: 'Invalid date format after conversion.',
+    });
+  }
+
   const newAppointment: Appointment = {
     service,
-    date,
+    date: formattedDate.toLocaleDateString('tr-TR'), // Formatlanmış tarih burada ayarlanıyor
     time,
     customerName,
     email,
@@ -30,7 +41,6 @@ export const createAppointment = async (req: Request, res: Response) => {
   };
 
   appointments.push(newAppointment); // Randevuyu geçici olarak saklıyoruz
-
 
   res
     .status(201)
