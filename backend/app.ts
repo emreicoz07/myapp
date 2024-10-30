@@ -6,7 +6,6 @@ import bodyParser from 'body-parser';
 import appointmentsRouter from './routes/appointments'; // appointments rotasını ekliyoruz,
 import contactRouter from './routes/contact';
 
-
 dotenv.config();
 
 const app = express();

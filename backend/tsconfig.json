@@ -7,6 +7,6 @@
     "skipLibCheck": true, // Kütüphane dosyalarını kontrol etmeyi atlar (derleme süresini hızlandırır)
     "forceConsistentCasingInFileNames": true // Büyük/küçük harf duyarlılığı sağlar
   },
-  "include": ["./*.ts"],  // backend dizinindeki tüm .ts dosyalarını içerecek şekilde ayarladık
+  "include": ["./*.ts"], // backend dizinindeki tüm .ts dosyalarını içerecek şekilde ayarladık
   "exclude": ["node_modules", "dist"]
 }

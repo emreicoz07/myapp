@@ -51,7 +51,6 @@
   margin: 5px 0;
 }
 
-
 /* Mobile cihazlarda düğme boyutunu küçültme */
 @media (max-width: 768px) {
   a {
