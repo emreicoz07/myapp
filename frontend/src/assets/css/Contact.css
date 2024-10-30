@@ -1,0 +1,69 @@
+.contact-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-form label {
+  font-weight: bold;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.contact-form button {
+  padding: 10px;
+  background-color: #ff6347;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.map-container {
+  margin: 20px 0;
+}
+
+.working-hours {
+  margin-top: 150px;
+  text-align: center;
+}
+
+.working-hours ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.working-hours li {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+
+/* Mobile cihazlarda düğme boyutunu küçültme */
+@media (max-width: 768px) {
+  a {
+    padding: 8px 16px;
+    font-size: 0.9em;
+  }
+}
+
+/* Büyük ekranlarda daha geniş düğme ve daha büyük metin */
+@media (min-width: 1024px) {
+  a {
+    padding: 12px 24px;
+    font-size: 1.1em;
+  }
+}

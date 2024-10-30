@@ -1,0 +1,90 @@
+/* General Container */
+.about-container {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  color: #333;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Hero Section */
+.about-section {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.about-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #ff6347;
+  font-weight: bold;
+}
+
+.about-section p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  color:#333
+}
+
+/* Subtitle Styling */
+.about-section h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-top: 30px;
+  font-weight: bold;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .about-section h1 {
+    font-size: 2rem;
+  }
+
+  .about-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .about-section p {
+    font-size: 1rem;
+  }
+}
+
+/* Team Information Section */
+.team-section {
+  margin-top: 40px;
+  text-align: left;
+}
+
+.team-section h2 {
+  text-align: center;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.team-section p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #666;
+}
+
+/* List Styling */
+.team-section ul {
+  list-style: disc;
+  padding-left: 20px;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-top: 15px;
+}
+
+.team-section ul li {
+  margin-bottom: 8px;
+  color: #555;
+}
