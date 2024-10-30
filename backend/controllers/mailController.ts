@@ -1,20 +1,20 @@
 import nodemailer from 'nodemailer';
 
-// E-posta gönderim fonksiyonu
-export const sendEmail = async (to: string, subject: string, text: string) => {
+export const sendEmail = async (to: string, subject: string, text: string, html?: string) => {
   const transporter = nodemailer.createTransport({
-    service: 'gmail', // Gmail kullanıyorsanız
+    service: 'gmail',
     auth: {
-      user: process.env.EMAIL_USER, // .env dosyanızda tanımlı olacak
-      pass: process.env.EMAIL_PASS, // .env dosyanızda tanımlı olacak
+      user: process.env.GMAIL_USER,
+      pass: process.env.GMAIL_PASS,
     },
   });
 
   const mailOptions = {
-    from: process.env.EMAIL_USER,
-    to, // Alıcı adresi (müşteri veya yönetici)
-    subject, // E-posta başlığı
-    text, // E-posta içeriği
+    from: process.env.GMAIL_USER,
+    to,
+    subject,
+    text,
+    ...(html && { html }), // Eğer HTML varsa ekle
   };
 
   try {
@@ -22,5 +22,6 @@ export const sendEmail = async (to: string, subject: string, text: string) => {
     console.log('Email sent successfully');
   } catch (error) {
     console.error('Error sending email:', error);
+    throw error;
   }
 };

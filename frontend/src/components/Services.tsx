@@ -2,26 +2,21 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import 'assets/css/Services.css'; // CSS dosyasını import ediyoruz
 
-const ServiceDetails: React.FC = () => (
-  <div>
-    <Helmet>
-      <title>Beauty Salon - Skincare Service</title>
-      <meta
-        name="description"
-        content="Experience the best skincare treatments at our Beauty Salon."
-      />
-      <meta
-        name="keywords"
-        content="beauty salon, skincare, beauty treatments"
-      />
-    </Helmet>
-    <h1>Skincare Services</h1>
-    <p>
-      Our skincare services will rejuvenate your skin and bring out your natural
-      beauty.
-    </p>
-  </div>
-);
+<div>
+  <Helmet>
+    <title>Beauty Salon - Skincare Service</title>
+    <meta
+      name="description"
+      content="Experience the best skincare treatments at our Beauty Salon."
+    />
+    <meta name="keywords" content="beauty salon, skincare, beauty treatments" />
+  </Helmet>
+  <h1>Skincare Services</h1>
+  <p>
+    Our skincare services will rejuvenate your skin and bring out your natural
+    beauty.
+  </p>
+</div>;
 
 const Services: React.FC = () => (
   <div className="services-container">
@@ -58,6 +53,10 @@ const Services: React.FC = () => (
         </p>
       </div>
     </div>
+    <h1 className="services-title">Testimonials</h1>
+    <p className="services-subtitle">
+      Explore the variety of beauty treatments we offer, tailored just for you.
+    </p>
   </div>
 );
 

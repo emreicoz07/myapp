@@ -19,7 +19,16 @@ const Appointment: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const newAppointment = { service, date, time, customerName, email, phone };
+    // Frontend'de `dd/mm/yyyy` formatında ayarlama
+    const formattedDate = date.split('-').reverse().join('/');
+    const newAppointment = {
+      service,
+      date: formattedDate, // Formatlanmış tarih burada kullanılıyor
+      time,
+      customerName,
+      email,
+      phone,
+    };
 
     setLoading(true); // İşlem başlıyor, loading durumu true yapılıyor
     setSuccess(false); // Başarı mesajını sıfırlıyoruz
@@ -36,15 +45,14 @@ const Appointment: React.FC = () => {
 
       if (response.ok) {
         dispatch(addAppointment(newAppointment));
-        setSuccess(true); // İşlem başarılı olunca başarı durumu true yapılıyor
+        setSuccess(true);
       } else {
-        alert('Error booking appointment: ');
+        await response.json();
       }
-    } catch (error) {
-      alert('An error occurred while booking the appointment.');
     } finally {
-      setLoading(false); // İşlem tamamlanınca loading durumu false yapılıyor
+      setLoading(false);
     }
+    console.log(formattedDate);
 
     // Formu temizliyoruz
     setService('');

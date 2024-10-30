@@ -3,7 +3,9 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
-import appointmentsRouter from './routes/appointments'; // appointments rotasını ekliyoruz
+import appointmentsRouter from './routes/appointments'; // appointments rotasını ekliyoruz,
+import contactRouter from './routes/contact';
+
 
 dotenv.config();
 
@@ -22,18 +24,23 @@ mongoose
   });
 
 // **CORS middleware'i ekliyoruz ve sadece bir defa kullanıyoruz**
-app.use(cors({
-  origin: 'http://localhost:3000', // Frontend URL'nizi burada belirtin
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'], // İzin verilen başlıklar
-  credentials: true, // Kimlik bilgileri ile istek yapılmasına izin veriyoruz
-}));
+app.use(
+  cors({
+    origin: 'http://localhost:3000', // Frontend URL'nizi burada belirtin
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'], // İzin verilen başlıklar
+    credentials: true, // Kimlik bilgileri ile istek yapılmasına izin veriyoruz
+  }),
+);
 
 // Body parser kullanımı
 app.use(bodyParser.json());
 
 // Randevu rotası
 app.use('/api/appointments', appointmentsRouter);
+
+// Contact route
+app.use('/api/contact', contactRouter);
 
 app.use(express.json());
 

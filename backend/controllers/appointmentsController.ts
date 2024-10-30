@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import { validationResult } from 'express-validator';
-import { sendAppointmentEmail } from './mailController'; // E-posta fonksiyonunu import ediyoruz
 
 interface Appointment {
   service: string;
@@ -11,7 +10,7 @@ interface Appointment {
   phone: string;
 }
 
-const appointments: Appointment[] = [];  // Geçici bir veri kaynağı (veritabanı yerine)
+const appointments: Appointment[] = []; // Geçici bir veri kaynağı (veritabanı yerine)
 
 export const createAppointment = async (req: Request, res: Response) => {
   const errors = validationResult(req);
@@ -21,12 +20,29 @@ export const createAppointment = async (req: Request, res: Response) => {
 
   const { service, date, time, customerName, email, phone } = req.body;
 
-  const newAppointment: Appointment = { service, date, time, customerName, email, phone };
-  
-  appointments.push(newAppointment);  // Randevuyu geçici olarak saklıyoruz
+  // Gelen `date` değerini `dd/mm/yyyy` formatına göre ayrıştır
+  const [day, month, year] = date.split('/');
+  const formattedDate = new Date(`${year}-${month}-${day}`);
 
-  // E-posta gönderme işlemi
-  await sendAppointmentEmail(newAppointment);
+  if (isNaN(formattedDate.getTime())) {
+    return res.status(400).json({
+      success: false,
+      message: 'Invalid date format after conversion.',
+    });
+  }
 
-  res.status(201).json({ message: 'Appointment created successfully!', newAppointment });
+  const newAppointment: Appointment = {
+    service,
+    date: formattedDate.toLocaleDateString('tr-TR'), // Formatlanmış tarih burada ayarlanıyor
+    time,
+    customerName,
+    email,
+    phone,
+  };
+
+  appointments.push(newAppointment); // Randevuyu geçici olarak saklıyoruz
+
+  res
+    .status(201)
+    .json({ message: 'Appointment created successfully!', newAppointment });
 };
