@@ -53,7 +53,6 @@ const Appointment: React.FC = () => {
 
       {loading && <p>Booking your appointment, please wait...</p>}
       {success && <p>Your appointment has been successfully booked!</p>}
-
       {!loading && !success && (
         <form onSubmit={handleSubmit}>
           <label>Choose a Service:</label>

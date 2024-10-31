@@ -1,8 +1,10 @@
+/* Footer.css */
 .footer {
   background-color: #333;
   color: #fff;
   padding: 20px 0;
   text-align: center;
+  margin-top: auto; /* Flex ile sayfanın en altına sabitler */
 }
 
 .footer-p {
@@ -12,6 +14,8 @@
 }
 
 .social-icons {
+  display: flex;
+  justify-content: center;
   gap: 15px;
   font-size: 1.5rem;
 }

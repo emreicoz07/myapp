@@ -8,7 +8,11 @@ const Footer: React.FC = () => (
       &copy; {new Date().getFullYear()} Beauty Center. All rights reserved.
     </p>
     <div className="social-icons">
-      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+      <a
+        href="https://www.facebook.com/profile.php?id=61566362141633"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <FaFacebook />
       </a>
       <a

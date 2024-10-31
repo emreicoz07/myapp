@@ -1,3 +1,14 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Tüm ekran yüksekliği boyunca yer kaplar */
+}
+
+.content {
+  flex: 1; /* İçeriğin genişleyebilmesi için */
+  padding: 20px; /* İçerik boşlukları */
+}
+
 .App {
   text-align: center;
 }
