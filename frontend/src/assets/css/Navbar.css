@@ -1,4 +1,4 @@
-/* General styles */
+/* Genel Navbar stilleri */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -8,16 +8,18 @@
   color: #333;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   position: relative;
+  z-index: 1000; /* Üstte görünmesi için z-index eklendi */
 }
 
 .navbar-logo img {
-  width: 90px; /* Logo size */
+  width: 90px;
 }
 
+/* Navbar linkleri */
 .navbar-links {
   list-style: none;
   display: flex;
-  gap: 30px;
+  gap: 10px;
 }
 
 .navbar-links li {
@@ -36,11 +38,11 @@
   transition: color 0.3s ease;
 }
 
-/* Book Appointment Button */
+/* Randevu Butonu */
 .appointment-button {
   background-color: #ff6347;
   color: #fff;
-  padding: 10px 15px 15px;
+  padding: 10px 15px;
   border-radius: 20px;
   transition: background-color 0.3s ease;
 }
@@ -49,35 +51,37 @@
   background-color: #e5533d;
 }
 
-/* Hamburger Menu for mobile */
+/* Mobil hamburger menü butonu */
 .navbar-hamburger {
   font-size: 1.5rem;
   cursor: pointer;
-  display: none; /* Hidden on large screens */
+  display: none; /* Büyük ekranlarda gizli */
 }
 
-/* Mobile Menu */
+/* Ekran boyutlarına göre düzenlemeler */
+
+/* Küçük ekran (Mobil) */
 @media (max-width: 768px) {
   .navbar-hamburger {
     display: block;
   }
 
   .navbar-links {
-    position: absolute;
+    position: fixed;
     top: 60px;
     right: 0;
     width: 100%;
-    height: 100vh;
-    background-color: rgba(255, 255, 255, 0.95);
+    height: 30vh;
+    background-color: rgba(255, 255, 255, 0.97);
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: top;
     gap: 20px;
-    display: none;
+    display: none; /* Başlangıçta gizli */
   }
 
   .navbar-links.active {
-    display: flex;
+    display: flex; /* Aktif olduğunda görünür yap */
   }
 
   .navbar-links a {
@@ -85,9 +89,28 @@
   }
 }
 
-/* Larger Screens */
-@media (min-width: 769px) {
+/* Orta ekran (Tablet) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .navbar-links {
+    gap: 20px;
+  }
+
+  .navbar-links a {
+    font-size: 1rem;
+  }
+}
+
+/* Büyük ekran (Laptop ve üstü) */
+@media (min-width: 1025px) {
   .navbar-links {
     display: flex;
+  }
+
+  .navbar-links a {
+    font-size: 1rem;
+  }
+
+  .appointment-button {
+    padding: 8px 12px;
   }
 }
