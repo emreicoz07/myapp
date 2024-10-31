@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { RootState } from '../store';
 
 // Randevu ekleme asenkron thunk fonksiyonu
 export const addAppointmentAsync = createAsyncThunk(
@@ -42,11 +41,15 @@ const initialState: AppointmentState = {
   success: false,
 };
 
-// appointmentSlice tanımlıyoruz
+// Redux Slice
 const appointmentSlice = createSlice({
   name: 'appointments',
   initialState,
-  reducers: {},
+  reducers: {
+    resetSuccess: (state) => {
+      state.success = false;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(addAppointmentAsync.pending, (state) => {
@@ -65,7 +68,12 @@ const appointmentSlice = createSlice({
   },
 });
 
-export const selectLoading = (state: RootState) => state.appointments.loading;
-export const selectSuccess = (state: RootState) => state.appointments.success;
+export const { resetSuccess } = appointmentSlice.actions;
+
+// Reselectörleri export edin
+export const selectLoading = (state: { appointments: AppointmentState }) =>
+  state.appointments.loading;
+export const selectSuccess = (state: { appointments: AppointmentState }) =>
+  state.appointments.success;
 
 export default appointmentSlice.reducer;

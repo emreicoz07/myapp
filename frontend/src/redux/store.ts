@@ -3,7 +3,7 @@ import appointmentReducer from './slices/appointmentSlice';
 
 const store = configureStore({
   reducer: {
-    appointments: appointmentReducer, // Randevu işlemleri için reducer ekleniyor
+    appointments: appointmentReducer,
   },
 });
 
