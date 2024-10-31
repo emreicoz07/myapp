@@ -28,6 +28,10 @@
     "linebreak-style": ["error", "unix"],
     "import/no-extraneous-dependencies": "error",
     "arrow-parens": ["error", "always"],
+    "no-param-reassign": [
+      "error",
+      { "props": true, "ignorePropertyModificationsFor": ["state"] }
+    ],
 
     // TypeScript ve React uyumluluğunu arttıran ek kurallar
     "@typescript-eslint/no-unused-vars": [
